@@ -22,7 +22,7 @@ class BasketCubit extends Cubit<List<ItemData>> {
     _loadItems();
   }
 
-  Future<void> _loadItems() async {
+  void _loadItems() {
     final list = List.generate(
         randomItemCount(),
         (index) => ItemData('Product #$index',
@@ -31,13 +31,13 @@ class BasketCubit extends Cubit<List<ItemData>> {
     emit(list);
   }
 
-  Future<void> deleteItem(int index) async {
+  void deleteItem(int index) {
     final newList = [...state];
     newList.removeAt(index);
     emit(newList);
   }
 
-  Future<void> addItem() async {
+  void addItem() {
     final list = [...state];
     list.insert(
         0, storedItems[randomItemCount(min: 0, max: storedItems.length - 1)]);
